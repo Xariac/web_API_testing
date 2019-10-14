@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "febfbcd6-971b-472d-bcc2-14cae0fc45ee",
+		"name": "web API testing",
+		"description": "web API testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "5 endpoints",
+			"item": [
+				{
+					"name": "https://jsonplaceholder.typicode.com/posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cac7426f-4ff9-4ad4-b6a9-9e2ec83b1691",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"let myData = pm.response.json();",
+									"console.log(myData[0].body);",
+									"pm.test(\"Checking if body include word molestiae\", function () {",
+									"    pm.expect(myData[0].body).to.include(\"molestiae\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/posts",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://jsonplaceholder.typicode.com/comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "073170af-3243-4711-8b8d-fed520a7030f",
+								"exec": [
+									"let myData = pm.response.json();",
+									"console.log(myData[0].email);",
+									"pm.test(\"Checking Email and ID\", function () {",
+									"    pm.expect(myData[0].email).to.eql(\"Eliseo@gardner.biz\");",
+									"    pm.expect(myData[0].postId).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/comments",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://jsonplaceholder.typicode.com/albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a596197e-844e-4259-9059-0766653d23a1",
+								"exec": [
+									"let myData = pm.response.json();",
+									"console.log(myData[0].title);",
+									"pm.test(\"Checking title\", function () {",
+									"    pm.expect(myData[5].title).to.include(\"c\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/albums",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://jsonplaceholder.typicode.com/photos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "71415b17-0fdf-4fd2-a324-e14ff81b8cb7",
+								"exec": [
+									"let myData = pm.response.json();",
+									"pm.test(\"Checking albumId and url\", function () {",
+									"    pm.expect(myData[0].albumId).to.eql(1);",
+									"    pm.expect(myData[0].url).to.include(\"https\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/photos",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://jsonplaceholder.typicode.com/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d9d014ea-436f-4e0c-b1a3-7e1585f0a93b",
+								"exec": [
+									"let myData = pm.response.json();",
+									"pm.test(\"Checking name and username including\", function () {",
+									"    pm.expect(myData[0].name).to.include(\"L\");",
+									"    pm.expect(myData[0].username).to.include(\"B\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
